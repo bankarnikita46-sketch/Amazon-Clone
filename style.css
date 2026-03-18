@@ -2,7 +2,8 @@
 *{
     margin: 0;
     font-family: Arial;
-    border: border-box;
+    /* border: border-box; */
+    box-sizing: border-box;
  }
  .navbar{
     height: 60px;
@@ -153,7 +154,11 @@ span{
 .panel-ops{
     width: 70%;
     font-size: 0.85rem;
+    display: flex;
+flex-direction: row;
+gap: 15px;
 }
+
 
 .panel-deals {
     font-size: 0.9rem;
@@ -370,4 +375,195 @@ ul a{
     padding-top: 5px;
     
 }
+.menu-btn{
+display: none;
+}
 
+/* ================= MOBILE VIEW ================= */
+
+@media (max-width: 768px){
+
+/* Navbar */
+.navbar{
+flex-wrap: wrap;
+height: auto;
+padding: 10px;
+}
+
+/* Logo small */
+.nav-logo{
+width: 100px;
+}
+.logo{
+width: 100px;
+height: 40px;
+background-size: contain;
+}
+
+/* Hide unnecessary items */
+.nav-address,
+.country,
+.nav-return{
+display: none;
+}
+
+/* Search full width */
+.nav-search{
+width: 100%;
+margin-top: 10px;
+order: 3;
+}
+
+/* Cart right */
+.nav-cart{
+margin-left: auto;
+}
+
+/* Panel */
+.panel{
+flex-wrap: wrap;
+height: auto;
+padding: 10px;
+}
+
+/* Panel items wrap */
+
+/* .panel-ops{ */
+/* display: none;
+flex-direction: column;
+background-color: #232f3e;
+width: 100%;
+padding: 10px; */
+.panel-ops{
+display: none;
+flex-direction: column;
+background-color: #232f3e;
+width: 100%;
+position: absolute;
+top: 60px;
+left: 0;
+z-index: 1000;
+}
+
+
+
+.panel-ops p{
+color: white;
+padding: 10px;
+border-bottom: 1px solid #444;
+margin: 0;
+}
+
+/* Show when active */
+.panel-ops.show{
+display: flex;
+}
+
+
+
+/* Hero */
+.hero-section{
+height: 200px;
+}
+
+/* Hero text */
+.hero-message{
+width: 95%;
+font-size: 12px;
+padding: 5px;
+height: auto;
+text-align: center;
+}
+
+/* Shop grid */
+.shop-section{
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 10px;
+padding: 10px;
+}
+
+/* Box */
+.box{
+width: 100%;
+height: auto;
+padding: 10px;
+}
+
+.box-img{
+height: 140px;
+}
+
+/* Footer */
+/* .foot-panel1{
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+width: 100%;
+padding: 12px;
+font-size: 14px;
+} */
+
+
+.foot-panel2{
+flex-direction: column;
+height: auto;
+padding: 20px;
+gap: 20px;
+}
+
+.foot-panel3{
+flex-direction: column;
+height: auto;
+gap: 10px;
+padding: 10px;
+}
+
+/* Center items */
+.footer-language,
+.footer-country{
+margin-left: 0;
+justify-content: center;
+}
+.menu-btn{
+display: block;
+font-size: 22px;
+color: white;
+cursor: pointer;
+padding: 10px;
+}
+
+
+}
+
+/* ===== SMALL MOBILE ===== */
+
+@media (max-width: 480px){
+
+.shop-section{
+grid-template-columns: 1fr;
+}
+
+.hero-section{
+height: 150px;
+}
+
+.search-input{
+font-size: 14px;
+}
+
+.panel-ops p{
+font-size: 12px;
+}
+
+.menu-btn{
+display: block;
+font-size: 22px;
+color: white;
+cursor: pointer;
+padding: 10px;
+}
+
+
+}
