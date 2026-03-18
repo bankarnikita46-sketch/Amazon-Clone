@@ -1,112 +1,88 @@
-// Hero Slider
-let heroImages = [
-"images/hero1.jpg",
-"images/hero2.jpg",
-"images/hero3.jpg"
-];
+// ================= MOBILE MENU =================
+let menuBtn = document.querySelector(".menu-btn");
+let panelOps = document.querySelector(".panel-ops");
 
-let hero = document.getElementById("hero-img");
-
-let index = 0;
-
-function changeHero(){
-
-index++;
-
-if(index >= heroImages.length){
-index = 0;
+if (menuBtn && panelOps) {
+  menuBtn.addEventListener("click", function () {
+    panelOps.classList.toggle("active");
+  });
 }
 
-hero.src = heroImages[index];
-
-}
-
-setInterval(changeHero,3000);
-
-// Search Filter
-
+// ================= SEARCH FUNCTION =================
 let searchInput = document.querySelector(".search-input");
 let boxes = document.querySelectorAll(".box");
 
-searchInput.addEventListener("keyup", function(){
+if (searchInput && boxes.length > 0) {
+  searchInput.addEventListener("keyup", function () {
+    let searchValue = searchInput.value.toLowerCase();
 
-let value = searchInput.value.toLowerCase();
+    boxes.forEach(function (box) {
+      let title = box.querySelector("h2").innerText.toLowerCase();
 
-boxes.forEach(function(box){
-
-let title = box.querySelector("h2").innerText.toLowerCase();
-
-if(title.includes(value)){
-box.style.display = "block";
+      if (title.includes(searchValue)) {
+        box.style.display = "block";
+      } else {
+        box.style.display = "none";
+      }
+    });
+  });
 }
-else{
-box.style.display = "none";
-}
 
-});
-
-});
-// Wishlist
-
-let wish = document.querySelectorAll(".wishlist");
-
-wish.forEach(function(btn){
-
-btn.addEventListener("click", function(){
-
-btn.innerText = "💖";
-
-});
-
-});
-// Mobile Menu
-
-let menu = document.querySelector(".menu-btn");
-let panel = document.querySelector(".panel-ops");
-
-menu.addEventListener("click", function(){
-
-panel.classList.toggle("show");
-
-});
+// ================= BACK TO TOP =================
 let backTop = document.querySelector(".foot-panel1");
 
-backTop.addEventListener("click", function(){
+if (backTop) {
+  backTop.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-});
-
-// Cart LocalStorage
-
-let cartButtons = document.querySelectorAll(".add-cart");
+// ================= CART SYSTEM =================
 let cart = document.querySelector(".nav-cart");
 
 let cartCount = localStorage.getItem("cartCount");
 
-if(cartCount == null){
-cartCount = 0;
-}else{
-cartCount = parseInt(cartCount);
+if (cartCount === null) {
+  cartCount = 0;
+} else {
+  cartCount = parseInt(cartCount);
 }
 
-cart.innerText = "Cart (" + cartCount + ")";
+// Show cart count
+if (cart) {
+  cart.innerHTML = `<i class="fa-solid fa-cart-shopping"></i> Cart (${cartCount})`;
+}
 
-cartButtons.forEach(function(btn){
+// ================= HERO CLICK (optional effect) =================
+let hero = document.querySelector(".hero-section");
 
-btn.addEventListener("click", function(){
+if (hero) {
+  hero.addEventListener("click", function () {
+    alert("Welcome to Amazon Clone 🔥");
+  });
+}
 
-cartCount++;
+// ================= NAVBAR SCROLL EFFECT =================
+window.addEventListener("scroll", function () {
+  let navbar = document.querySelector(".navbar");
 
-localStorage.setItem("cartCount", cartCount);
-
-cart.innerText = "Cart (" + cartCount + ")";
-
-alert("Product added to cart");
-
+  if (window.scrollY > 50) {
+    navbar.style.backgroundColor = "#131921";
+  } else {
+    navbar.style.backgroundColor = "#0f1111";
+  }
 });
 
+// ================= PANEL ITEMS CLICK =================
+let panelItems = document.querySelectorAll(".panel-ops p");
+
+panelItems.forEach(function (item) {
+  item.addEventListener("click", function () {
+    alert(item.innerText + " clicked ✅");
+  });
 });
+
+console.log("Amazon Clone JS Loaded ✅");
